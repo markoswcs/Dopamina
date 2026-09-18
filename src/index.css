@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&display=swap');
+@import "tailwindcss";
+
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-accent: #E85D3A;
+  --color-accent-light: #FF7A54;
+  --color-accent-dark: #C94A2B;
+  --color-success: #2D9F6F;
+  --color-success-light: #3DBF87;
+  --color-warning: #F5A623;
+  --color-danger: #E54D4D;
+
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+/* ===== CSS Variable-based theming ===== */
+:root {
+  --t-bg: #FAFAF7;
+  --t-surface: #FFFFFF;
+  --t-card: #FFFFFF;
+  --t-border: #ECECEA;
+  --t-text: #2C2C2C;
+  --t-text-sec: #6B6B6B;
+  --t-muted: #9A9A9A;
+}
+
+body.dark {
+  --t-bg: #131316;
+  --t-surface: #1C1C21;
+  --t-card: #222228;
+  --t-border: #2E2E35;
+  --t-text: #F0F0F0;
+  --t-text-sec: #A0A0A8;
+  --t-muted: #606068;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--t-bg);
+    color: var(--t-text);
+  }
+  
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+}
+
+/* ===== THEME UTILITY CLASSES (using CSS vars) ===== */
+.theme-bg { background-color: var(--t-bg); }
+.theme-surface { background-color: var(--t-surface); }
+.theme-card { background-color: var(--t-card); }
+.theme-border { border-color: var(--t-border); }
+.theme-text { color: var(--t-text); }
+.theme-text-secondary { color: var(--t-text-sec); }
+.theme-muted { color: var(--t-muted); }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--t-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+/* ===== MARQUEE ===== */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 12s linear infinite; /* Faster on mobile */
+  will-change: transform;
+}
+@media (min-width: 768px) {
+  .animate-marquee {
+    animation: marquee 30s linear infinite; /* Normal on desktop */
+  }
+}
+
+/* ===== FADE IN UP ===== */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out forwards;
+}
+
+/* Custom input styling */
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -1px;
+}
+
+input, textarea {
+  color: var(--t-text);
+}
+input::placeholder, textarea::placeholder {
+  color: var(--t-muted);
+}
+
+/* ===== FARM GAME ANIMATIONS (HAY DAY STYLE) ===== */
+@keyframes float-cloud {
+  0% { transform: translateX(-10%); }
+  50% { transform: translateX(10%); }
+  100% { transform: translateX(-10%); }
+}
+.animate-float-cloud { animation: float-cloud 20s ease-in-out infinite; }
+
+@keyframes grow-plant {
+  0% { transform: scale(0.3) translateY(10px); opacity: 0; }
+  70% { transform: scale(1.1) translateY(-2px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+.animate-grow-plant { animation: grow-plant 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(15deg); filter: brightness(1.5); }
+}
+.animate-sparkle { animation: sparkle 2s infinite ease-in-out; }
+
+@keyframes drip {
+  0% { transform: translateY(-5px); opacity: 0; }
+  50% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(5px); opacity: 0; }
+}
+.animate-drip { animation: drip 1.5s infinite linear; }
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+.animate-sway { animation: sway 3s infinite ease-in-out; }
+
+.farm-wood-panel {
+  background-color: #d28c46;
+  background-image: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 10px,
+      rgba(0,0,0,0.05) 10px,
+      rgba(0,0,0,0.05) 12px
+    );
+  border: 4px solid #8b4513;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3), 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.farm-dirt-plot {
+  background-color: #654321;
+  box-shadow: 
+    inset 0 4px 0 rgba(0,0,0,0.2), 
+    inset 0 -4px 0 rgba(139, 69, 19, 0.5),
+    0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Harvest float particle */
+@keyframes harvest-float {
+  0% { transform: scale(1) translateY(0); opacity: 1; }
+  40% { transform: scale(1.4) translateY(-25px); opacity: 0.9; }
+  100% { transform: scale(0.4) translateY(-90px); opacity: 0; }
+}
+.animate-harvest-float { animation: harvest-float 0.7s ease-out forwards; }
+
+/* Plot harvest pop */
+@keyframes plot-pop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.25); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+.animate-plot-pop { animation: plot-pop 0.35s ease-out; }
+
+/* Field unlock shimmer */
+@keyframes field-unlock {
+  0% { opacity: 0; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-field-unlock { animation: field-unlock 0.5s ease-out; }
+
+/* Crop ready glow */
+@keyframes ready-glow {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+  50% { filter: brightness(1.3) drop-shadow(0 0 8px rgba(253, 224, 71, 0.6)); }
+}
+.animate-ready-glow { animation: ready-glow 1.5s infinite ease-in-out; }
+
+/* Water splash */
+@keyframes water-splash {
+  0% { transform: scale(0); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.6; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.animate-water-splash { animation: water-splash 0.5s ease-out forwards; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Scale-in for modals */
+@keyframes scale-in {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-scale-in { animation: scale-in 0.3s ease-out forwards; }
+
+/* Slot Machine Reel Spin */
+@keyframes reel-spin {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 1000px; }
+}
+.animate-reel-spin {
+  animation: reel-spin 0.5s linear infinite;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 40px,
+    rgba(255, 255, 255, 0.05) 40px,
+    rgba(255, 255, 255, 0.05) 80px
+  );
+  background-size: 100% 160px;
+}
+
+/* 3D Winner Float */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1.1); }
+  50% { transform: translateY(-6px) scale(1.12); }
+}
+
+/* Shimmer Effect for Buttons */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  50%, 100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes toast-enter {
+  0% { opacity: 0; transform: translate(-50%, -20px) scale(0.9); }
+  100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+.animate-toast-enter {
+  animation: toast-enter 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+@keyframes fly-to-bell {
+  0% { opacity: 1; transform: translate(-50%, 0) scale(1) skew(0deg, 0deg); }
+  20% { transform: translate(-50%, -10px) scale(1.05) skew(-5deg, 2deg); filter: blur(0px); }
+  100% { opacity: 0; transform: translate(35vw, -100px) scale(0.05) skew(30deg, -10deg); filter: blur(5px); }
+}
+.animate-toast-exit-to-bell {
+  animation: fly-to-bell 0.65s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
+
+/* ===== REDUCED ANIMATIONS (Optimization) ===== */
+.reduce-animations *,
+.reduce-animations *::before,
+.reduce-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
