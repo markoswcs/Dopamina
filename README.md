@@ -3,7 +3,6 @@
 > Um E-commerce gamificado com mecânicas de abertura de caixas (estilo CS2), mini-games e itens hilários!
 
 ![Dopamina Home](screenshot_home.png)
-![Dopamina Jogos](screenshot_aposta.png)
 ![Dopamina Roleta](screenshot_roleta.png)
 
 ## 🎮 Sobre o Projeto
