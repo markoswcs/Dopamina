@@ -4,6 +4,7 @@
 
 ![Dopamina Home](screenshot_home.png)
 ![Dopamina Jogos](screenshot_aposta.png)
+![Dopamina Roleta](screenshot_roleta.png)
 
 ## 🎮 Sobre o Projeto
 O **DopaShop** não é apenas uma loja virtual, é uma experiência interativa. O usuário entra com moedas virtuais (DopaCoins) e pode:

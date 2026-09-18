@@ -36,8 +36,30 @@ const puppeteer = require('puppeteer');
   
   await new Promise(resolve => setTimeout(resolve, 2000));
   
-  console.log('Tirando a segunda screenshot (DopaGames)...');
+  console.log('Tirando a segunda screenshot (DopaGames - Caixas)...');
   await page.screenshot({ path: 'screenshot_aposta.png' });
+
+  console.log('Abrindo uma caixa...');
+  await page.evaluate(() => {
+    // Encontrar uma caixa e clicar
+    const caixas = Array.from(document.querySelectorAll('.cursor-pointer'));
+    const caixa = caixas.find(c => c.textContent && c.textContent.includes('Fever Case'));
+    if (caixa) caixa.click();
+  });
+  
+  await new Promise(resolve => setTimeout(resolve, 2000)); // Esperar abrir a tela da caixa
+  
+  await page.evaluate(() => {
+    // Clicar no botão "45 DOPAS" (Abrir caixa)
+    const btns = Array.from(document.querySelectorAll('button'));
+    const abrir = btns.find(b => b.textContent && b.textContent.includes('DOPAS'));
+    if (abrir) abrir.click();
+  });
+
+  await new Promise(resolve => setTimeout(resolve, 3000)); // Esperar a roleta girar um pouco
+  
+  console.log('Tirando a terceira screenshot (Roleta)...');
+  await page.screenshot({ path: 'screenshot_roleta.png' });
 
   console.log('Screenshots salvas com sucesso!');
   await browser.close();
