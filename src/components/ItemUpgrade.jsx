@@ -542,5 +542,3 @@ export default function ItemUpgrade({ preselectedItem, onClearPreselect, onToast
  </div>
  );
 }
-T r i g g e r i n g   H M R 
- 

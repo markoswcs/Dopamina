@@ -2,7 +2,8 @@
 
 > Um E-commerce gamificado com mecânicas de abertura de caixas (estilo CS2), mini-games e itens hilários!
 
-![Dopamina Showcase](screenshot.png)
+![Dopamina Home](screenshot_home.png)
+![Dopamina Jogos](screenshot_aposta.png)
 
 ## 🎮 Sobre o Projeto
 O **DopaShop** não é apenas uma loja virtual, é uma experiência interativa. O usuário entra com moedas virtuais (DopaCoins) e pode:
